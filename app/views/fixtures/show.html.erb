@@ -80,8 +80,8 @@
     <tr>
       <th scope="row"><%= index %></th>
       <td><%= player_name %></td>
-      <td><%= @analytics['opponent'][:players][element_id] %></td>
-      <td><%= @analytics['us'][:players][element_id] %></td>
+      <td><%= @analytics['opponent'][:subs][element_id] %></td>
+      <td><%= @analytics['us'][:subs][element_id] %></td>
       <td class="endM"><button class="btn btn-sm">Ended?</button></td>
     </tr>
   <% end %>
