@@ -1,0 +1,97 @@
+<h3>Team Analytics</h3>
+<h4>Stats: <%= @fixture_data['away_team']%> VS <%= @fixture_data['home_team'] %></h4>
+
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Points</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_points %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_points %></h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Transfers Left</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_transfers_left %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_transfers_left %></h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">In Bank</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_bank %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_bank %></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+<h5 class="p-3 mb-2 bg-primary text-white">Starting XI</h5>
+<table class="table table-hover table-sm">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Player Name</th>
+    <th><%= @fixture_data['away_team'] %></th>
+    <th><%= @fixture_data['home_team'] %></th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% players_from_both_teams.each_with_index do |element_id, index| %>
+      <% player_name = get_player_detail(element_id) %>
+      <tr>
+        <th scope="row"><%= index %></th>
+        <td><%= player_name %></td>
+        <td><%= @analytics['opponent'][:players][element_id] %></td>
+        <td><%= @analytics['us'][:players][element_id] %></td>
+        <td class="endM"><button class="btn btn-sm">Ended?</button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="clearfix"></div>
+<h5 class="p-3 mb-2 bg-warning text-dark">Substitutes</h5>
+<table class="table table-hover table-sm">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Player Name</th>
+    <th><%= @fixture_data['away_team'] %></th>
+    <th><%= @fixture_data['home_team'] %></th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% subs_from_both_teams.each_with_index do |element_id, index| %>
+    <% player_name = get_player_detail(element_id) %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= player_name %></td>
+      <td><%= @analytics['opponent'][:players][element_id] %></td>
+      <td><%= @analytics['us'][:players][element_id] %></td>
+      <td class="endM"><button class="btn btn-sm">Ended?</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script>
+  $(document).ready(function(){
+    $('.endM').click(function(){
+      $(this).closest('tr').hide();
+    })
+  })
+</script>

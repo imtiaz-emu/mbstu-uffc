@@ -1,0 +1,27 @@
+<h1>Fixtures</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th># Gameweek</th>
+      <th>Home Team</th>
+      <th>Away Team</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @fixtures.each do |fixture| %>
+    <tr>
+      <th scope="row"><%= fixture['gameweek'] %></th>
+      <td><%= fixture['home_team'] %></td>
+      <td><%= fixture['away_team'] %></td>
+      <td>
+        <a href="<%= fixture_path(fixture['gameweek'], result: true) %>" class="btn btn-outline-primary" role="button">Results</a>
+        <a href="<%= fixture_path(fixture['gameweek']) %>" class="btn btn-outline-primary" role="button">Teams</a>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
