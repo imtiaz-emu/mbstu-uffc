@@ -19,7 +19,6 @@ class FixturesController < ApplicationController
     @fixture.get_players_stats('us', @prev_gw_id)
     @total_elements = @fixture.instance_variable_get(:@total_elements)
     @analytics = @fixture.instance_variable_get(:@analytics)
-    File.open(Rails.root.join('public', 'result.json'), 'w') { |file| file.write(@fixture.instance_variable_get(:@analytics)) }
   end
 
   private

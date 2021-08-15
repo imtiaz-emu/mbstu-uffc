@@ -17,8 +17,8 @@
       <td><%= fixture['home_team'] %></td>
       <td><%= fixture['away_team'] %></td>
       <td>
-        <a href="<%= fixture_path(fixture['gameweek'], result: true) %>" class="btn btn-outline-primary" role="button">Results</a>
-        <a href="<%= fixture_path(fixture['gameweek']) %>" class="btn btn-outline-primary" role="button">Teams</a>
+        <a href="<%= fixture_path(fixture['gameweek'], result: true) %>" data-turbolinks="false" class="btn btn-outline-primary" role="button">Results</a>
+        <a href="<%= fixture_path(fixture['gameweek']) %>" data-turbolinks="false" class="btn btn-outline-primary" role="button">Teams</a>
       </td>
     </tr>
   <% end %>
