@@ -43,7 +43,8 @@
     <th>Player Name</th>
     <th><%= @fixture_data['away_team'] %> (cap)</th>
     <th><%= @fixture_data['home_team'] %> (cap)</th>
-    <th>Action</th>
+    <th>Mark Row</th>
+    <th>Match End?</th>
   </tr>
   </thead>
 
@@ -55,6 +56,7 @@
         <td><%= player_name %></td>
         <td><%= @analytics['opponent'][:players][element_id] %> (<%= @analytics['opponent'][:players_caps][element_id] %>)</td>
         <td><%= @analytics['us'][:players][element_id] %> (<%= @analytics['us'][:players_caps][element_id] %>)</td>
+        <td class="rowM"><button class="btn btn-sm">Mark?</button></td>
         <td class="endM"><button class="btn btn-sm">Ended?</button></td>
       </tr>
     <% end %>
@@ -92,6 +94,10 @@
   $(document).ready(function(){
     $('.endM').click(function(){
       $(this).closest('tr').hide();
+    });
+
+    $('.rowM').click(function(){
+      $(this).closest('tr').css('background-color', 'yellow');
     })
   })
 </script>
