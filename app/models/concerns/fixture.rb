@@ -18,7 +18,8 @@ class Fixture
       response['picks'].each do |pick|
         if pick['position'] < 12
           players = [pick['element']]*pick['multiplier']
-          stats[:players].push(players)
+          stats[:players_caps].push(players)
+          stats[:players].push([pick['element']])
         else
           stats[:subs].push([pick['element']])
         end
@@ -33,6 +34,7 @@ class Fixture
 
     stats.map { |k, v| stats[k].flatten! }
     stats[:players] = stats[:players].tally
+    stats[:players_caps] = stats[:players_caps].tally
     stats[:subs] = stats[:subs].tally
     @analytics[type] = stats
   rescue

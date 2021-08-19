@@ -41,8 +41,8 @@
   <tr>
     <th>#</th>
     <th>Player Name</th>
-    <th><%= @fixture_data['away_team'] %></th>
-    <th><%= @fixture_data['home_team'] %></th>
+    <th><%= @fixture_data['away_team'] %> (cap)</th>
+    <th><%= @fixture_data['home_team'] %> (cap)</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -53,8 +53,8 @@
       <tr>
         <th scope="row"><%= index %></th>
         <td><%= player_name %></td>
-        <td><%= @analytics['opponent'][:players][element_id] %></td>
-        <td><%= @analytics['us'][:players][element_id] %></td>
+        <td><%= @analytics['opponent'][:players][element_id] %> (<%= @analytics['opponent'][:players_caps][element_id] %>)</td>
+        <td><%= @analytics['us'][:players][element_id] %> (<%= @analytics['us'][:players_caps][element_id] %>)</td>
         <td class="endM"><button class="btn btn-sm">Ended?</button></td>
       </tr>
     <% end %>
