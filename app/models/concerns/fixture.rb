@@ -25,7 +25,7 @@ class Fixture
         end
       end
 
-      stats[:points].push(response['entry_history']['total_points'])
+      stats[:points].push(response['entry_history']['points'])
       stats[:transfers_made].push(response['entry_history']['event_transfers'])
       stats[:transfers_left].push(response['entry_history']['event_transfers'] == 0 ? 1 : 0)
       stats[:chips_used].push(response['chips_used'])
