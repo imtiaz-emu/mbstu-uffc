@@ -38,8 +38,12 @@ class FixturesController < ApplicationController
     @gw_details ||= HTTParty.get("https://fantasy.premierleague.com/api/fixtures/?event=#{params[:id]}")
   end
 
+  def load_live_data
+    @live_event_data ||= HTTParty.get("https://fantasy.premierleague.com/api/event/#{params[:id]}/live/")
+  end
+
   def is_gw_started?
-    load_gw_data[0]['kickoff_time'].to_time.in_time_zone(TIME_ZONE) <= Time.current.in_time_zone(TIME_ZONE)
+    load_live_data['elements'].any?
   end
 
   # if result = true AND gw Not started: That means no result, redirect
