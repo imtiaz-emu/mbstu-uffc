@@ -13,11 +13,19 @@ module FixturesHelper
   end
 
   def opponent_points
-    @analytics['opponent'][:points].sum
+    if @live_event_data['elements'].any?
+      live_points_for_teams('opponent')
+    else
+      @analytics['opponent'][:points].sum
+    end
   end
 
   def mbstu_points
-    @analytics['us'][:points].sum
+    if @live_event_data['elements'].any?
+      live_points_for_teams('us')
+    else
+      @analytics['us'][:points].sum
+    end
   end
 
   def opponent_transfers_left
@@ -34,5 +42,14 @@ module FixturesHelper
 
   def mbstu_bank
     @analytics['us'][:bank].join(', ')
+  end
+
+  def live_points_for_teams(team)
+    sum = 0
+    @analytics[team][:players_caps].each do |element_id, no_of_players|
+      player = @live_event_data['elements'].find { |element| element['id'] == element_id.to_i }
+      sum += (player['stats']['total_points']*no_of_players)
+    end
+    sum
   end
 end
