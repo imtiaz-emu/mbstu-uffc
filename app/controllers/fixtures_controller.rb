@@ -35,7 +35,7 @@ class FixturesController < ApplicationController
   end
 
   def load_gw_data
-    @gw_details ||= HTTParty.get("https://fantasy.premierleague.com/api/fixtures/?event=#{params[:id]}")
+    @gw_details ||= JSON.parse(HTTParty.get("https://fantasy.premierleague.com/api/fixtures/?event=#{params[:id]}").body)
   end
 
   def load_live_data

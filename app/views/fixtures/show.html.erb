@@ -50,8 +50,8 @@
 
   <tbody>
     <% players_from_both_teams.each_with_index do |element_id, index| %>
-      <% player_name = get_player_detail(element_id) %>
-      <tr>
+      <% player_name, match_status = get_player_detail(element_id) %>
+      <tr class="<%= match_status %>">
         <th scope="row"><%= index %></th>
         <td><%= player_name %></td>
         <td><%= @analytics['opponent'][:players][element_id] %> (<%= @analytics['opponent'][:players_caps][element_id] %>)</td>
@@ -78,8 +78,8 @@
 
   <tbody>
   <% subs_from_both_teams.each_with_index do |element_id, index| %>
-    <% player_name = get_player_detail(element_id) %>
-    <tr>
+    <% player_name, match_status = get_player_detail(element_id) %>
+    <tr class="<%= match_status %>">
       <th scope="row"><%= index %></th>
       <td><%= player_name %></td>
       <td><%= @analytics['opponent'][:subs][element_id] %></td>

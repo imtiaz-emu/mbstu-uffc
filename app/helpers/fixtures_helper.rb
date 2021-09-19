@@ -9,7 +9,7 @@ module FixturesHelper
 
   def get_player_detail(element_id)
     player = @total_elements.find { |element| element['id'] == element_id.to_i }
-    player['web_name']
+    [player['web_name'], player_match_finished?(player['team'])]
   end
 
   def opponent_points
@@ -51,5 +51,10 @@ module FixturesHelper
       sum += (player['stats']['total_points']*no_of_players)
     end
     sum
+  end
+
+  def player_match_finished?(team_id)
+    match_stats = @gw_details.find { |match| match['team_a'] == team_id || match['team_h'] == team_id }
+    match_stats['finished'] ? 'finished' : ''
   end
 end
