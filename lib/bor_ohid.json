@@ -1,0 +1,23 @@
+[
+  {
+    "gameweek": "8",
+    "home_team": "BORgin_MBSTU",
+    "away_team": "Gamblers",
+    "home_players": ["3081736", "1285808", "8203431", "8202831", "7297598"],
+    "away_players": ["8108293",	"8181488", "8173225",	"8172717",	"8172261"]
+  },
+  {
+    "gameweek": "9",
+    "home_team": "BORgin_MBSTU",
+    "away_team": "Supernova's",
+    "home_players": ["3081736", "1285808", "8203431", "8202831", "7297598"],
+    "away_players": ["7933784", "7933834", "740953", "8205194", "8205227"]
+  },
+  {
+    "gameweek": "10",
+    "home_team": "BORgin_MBSTU",
+    "away_team": "Ra's al Ghul Academy",
+    "home_players": ["3081736", "1285808", "8203431", "8202831", "7297598"],
+    "away_players": ["8184711", "3909232", "8206018", "8221318", "8202324"]
+  }
+]
