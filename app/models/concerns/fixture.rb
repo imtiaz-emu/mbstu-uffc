@@ -28,8 +28,9 @@ class Fixture
       stats[:points].push(response['entry_history']['points'])
       stats[:transfers_made].push(response['entry_history']['event_transfers'])
       stats[:transfers_left].push(response['entry_history']['event_transfers'] == 0 ? 1 : 0)
-      stats[:chips_used].push(response['chips_used'])
+      stats[:chips_used].push(response['active_chip'])
       stats[:bank].push(response['entry_history']['bank'].to_f/10.0)
+      stats[:hits].push(response['entry_history']['event_transfers_cost'])
     end
 
     stats.map { |k, v| stats[k].flatten! }
@@ -37,7 +38,7 @@ class Fixture
     stats[:players_caps] = stats[:players_caps].tally
     stats[:subs] = stats[:subs].tally
     @analytics[type] = stats
-  rescue
+  rescue => e
     @error = 'This GW data is not available'
   end
 end

@@ -8,7 +8,8 @@ class Statistics
       transfers_made: [],
       transfers_left: [],
       chips_used: [],
-      bank: []
+      bank: [],
+      hits: []
     }
   end
 end

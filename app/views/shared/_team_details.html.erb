@@ -7,8 +7,9 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Points</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_points %></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_points %></h6>
+        <p style="color: green">Including (-4) hits</p>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_points - hit_taken_points('opponent') %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_points - hit_taken_points('us') %></h6>
       </div>
     </div>
   </div>
@@ -23,12 +24,23 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">In Bank</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= opponent_bank %></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Us: <%= mbstu_bank %></h6>
+        <h5 class="card-title">Hit Points</h5>
+        <p style="color: green">This point will be deducted from total points</p>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= hit_taken_points('opponent') %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= hit_taken_points('us') %></h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Chips Used</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Opponent: <%= chips_used('opponent') %></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Us: <%= chips_used('us') %></h6>
       </div>
     </div>
   </div>

@@ -44,6 +44,15 @@ module FixturesHelper
     @analytics['us'][:bank].join(', ')
   end
 
+  def hit_taken_points(team)
+    @analytics[team][:hits].map(&:to_i).sum
+  end
+
+  def chips_used(team)
+    grouped_chips = @analytics[team][:chips_used].reject(&:blank?).tally
+    grouped_chips.map { |chip| "#{chip[0]}: #{chip[1]}" }.join(', ')
+  end
+
   def live_points_for_teams(team)
     sum = 0
     @analytics[team][:players_caps].each do |element_id, no_of_players|
