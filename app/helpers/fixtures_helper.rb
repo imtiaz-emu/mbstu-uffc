@@ -64,6 +64,9 @@ module FixturesHelper
 
   def player_match_finished?(team_id)
     match_stats = @gw_details.find { |match| match['team_a'] == team_id || match['team_h'] == team_id }
+
+    return 'postponed' unless match_stats
+
     match_stats['finished'] ? 'finished' : ''
   end
 end
